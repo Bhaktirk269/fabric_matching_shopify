@@ -6,3 +6,13 @@ rapidfuzz
 supabase
 pydantic
 gunicorn
+# from your project root
+pip install --upgrade pip
+pip install python-multipart
+
+# record the dependency
+pip freeze | grep -i '^python-multipart' >> requirements.txt
+
+git add requirements.txt
+git commit -m "Add python-multipart for FastAPI form/file uploads"
+git push
