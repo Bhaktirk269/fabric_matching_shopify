@@ -1,4 +1,3 @@
-cat > requirements.txt << 'EOF'
 fastapi
 uvicorn[standard]
 gunicorn
@@ -8,4 +7,3 @@ rapidfuzz
 supabase
 pydantic
 python-multipart
-EOF
