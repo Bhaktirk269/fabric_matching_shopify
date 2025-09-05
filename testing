@@ -1,0 +1,20 @@
+ 
+
+
+ //server
+  & .\.venv\Scripts\Activate.ps1; $env:MATERIALS_GSHEET_URL="https://docs.google.com/spreadsheets/d/14p6nSEcVNt5VXXOcOXOUO_w7vmesNG0CRYnpRQglxqc/edit?gid=881878608#gid=881878608"; $env:MATERIALS_GSHEET_GID="881878608"; $env:SHOPIFY_ORDER_API="https://ziperp-api.vercel.app/api/shipment/orderNumber"; uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+  
+
+//
+ $base = "http://localhost:8000"
+ $sheet = "https://docs.google.com/spreadsheets/d/14p6nSEcVNt5VXXOcOXOUO_w7vmesNG0CRYnpRQglxqc/edit?gid=881878608#gid=881878608"
+ Invoke-RestMethod "$base/fabric-master/gsheet/preview?url=$( [uri]::EscapeDataString($sheet) )&limit=5" | ConvertTo-Json -Depth 6
+
+ //run
+ $base = "http://localhost:8000"
+ $spreadsheetId = "14p6nSEcVNt5VXXOcOXOUO_w7vmesNG0CRYnpRQglxqc"
+ $gid = "881878608"
+ Invoke-RestMethod "$base/fabric-master/gsheet/preview?spreadsheet_id=$spreadsheetId&gid=$gid&limit=5" | ConvertTo-Json -Depth 6
+
+  $sheet
+  $base = "http://localhost:8000"; $order = "26872"; Invoke-RestMethod "$base/match/order/$order/summary?skip_empty=true" | ConvertTo-Json -Depth 6

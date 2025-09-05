@@ -1,0 +1,25 @@
+Match (website name prioritized):
+GET /match/order/{order_number}/chosen?skip_empty=true
+GET /match/order/{order_number}/summary?skip_empty=true
+GET /match/orders?orderNumbers=123,456&skip_empty=true
+
+Google Sheet (live source, no local files):
+GET /fabric-master/gsheet/preview?url={sheet_url}&limit=5
+GET /fabric-master/gsheet/preview?spreadsheet_id={id}&gid={gid}&limit=5
+POST /fabric-master/gsheet/import?url={sheet_url}&require_active=true|false (reads sheet, no DB writes)
+
+Materials (read-only from sheet)
+GET /materials?limit=100&offset=0&active=true|false
+
+Debug
+GET /debug/config
+GET /debug/order-raw/{order_number}
+
+example:
+
+curl "http://localhost:8000/match/order/26878/chosen?skip_empty=true"
+curl "http://localhost:8000/fabric-master/gsheet/preview?spreadsheet_id=14p6nSEcVNt5VXXOcOXOUO_w7vmesNG0CRYnpRQglxqc&gid=881878608&limit=5"
+
+
+
+
