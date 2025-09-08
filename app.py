@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx
 from rapidfuzz import fuzz
@@ -34,6 +35,15 @@ if SHOPIFY_ORDER_API:
 if not SHOPIFY_ORDER_API:
     raise RuntimeError("Missing env var: SHOPIFY_ORDER_API")
 app = FastAPI(title="Fabric Matcher")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific domains
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ------------------------
 # Utilities / Normalizers
